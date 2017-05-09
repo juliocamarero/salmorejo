@@ -54,7 +54,37 @@ public class SalmorejoRestController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public String postState(@RequestParam("user_name") String userId) {
+	public String postState(@RequestParam("user_name") String userId, @RequestParam("text") String text) {
+		if (text.equals("") || text.equals("start")) {
+			return startPomodoro(userId);
+		}
+		else if (text.equals("stop")) {
+			return stopPomodoro(userId);
+		}
+		else if (text.equals("list")) {
+			return "All these users are in Pomodoro....";
+		}
+		else {
+			checkUserPomodoro(text);
+		}
+
+		return "Sorry, command " + text + " is not available yet.";
+
+	}
+
+	private String checkUserPomodoro(String otherUserId) {
+		State state = dataRepository.findByUserId(otherUserId);
+
+		if (state != null && state.isBusy()) {
+			Date time = new Date();
+
+			return otherUserId + " is still busy for " + (30 - (time.getTime() - state.getDate())/60000);
+		}
+
+		return otherUserId + " is available :)";
+	}
+
+	private String startPomodoro(String userId) {
 		State state = new State();
 
 		state.setBusy(true);
@@ -65,6 +95,19 @@ public class SalmorejoRestController {
 		dataRepository.save(state);
 
 		return "Pomodoro Started for User " + userId;
+	}
+
+	private String stopPomodoro(String userId) {
+		State state = new State();
+
+		state.setBusy(false);
+		state.setDate(new Date().getTime());
+		state.setId(userId);
+		state.setUserId(userId);
+
+		dataRepository.save(state);
+
+		return "Pomodoro Stopped for User " + userId;
 	}
 
 }
