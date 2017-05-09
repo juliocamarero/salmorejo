@@ -9,13 +9,15 @@ byte mac[] = {
 IPAddress server(192,168,50,231);
 int port = 9090;
 
-unsigned long lastConnectionTime = 0;
-const unsigned long postingInterval = 10L * 1000L;
+EthernetClient client;
 
 int redLed = 9;
 int greenLed = 8;
+int yellowLed = 2;
 
-EthernetClient client;
+String body = "";
+
+int flag = 0;
 
 void EthernetConnect() {
   if (Ethernet.begin(mac) == 0) {
@@ -39,7 +41,7 @@ void printIPAddress() {
 }
 
 // this method makes a HTTP connection to the server:
-void httpRequest() {
+bool httpRequest() {
   // close any connection before send a new request.
   // This will free the socket on the WiFi shield
   client.stop();
@@ -47,15 +49,17 @@ void httpRequest() {
   // if there's a successful connection:
   if (client.connect(server, port)) {
     Serial.println("connecting...");
+
     // send the HTTP GET request:
     client.println("GET / HTTP/1.0");
     client.println();
 
-    // note the time that the connection was made:
-    lastConnectionTime = millis();
+    return true;
   } else {
     // if you couldn't make a connection:
     Serial.println("connection failed");
+
+    return false;
   }
 }
 
@@ -64,6 +68,7 @@ void setup() {
 
   pinMode(redLed, OUTPUT);
   pinMode(greenLed, OUTPUT);
+  pinMode(yellowLed, OUTPUT);
 
   digitalWrite(redLed, LOW);
   digitalWrite(greenLed, HIGH);    
@@ -72,16 +77,18 @@ void setup() {
   EthernetConnect();
 }
 
-String body = "";
-
-int flag = 0;
-
 void loop() {
 
   if (flag == 0) {
     Serial.println("Making request");
     delay(1000);
-    httpRequest();
+    if (!httpRequest()) {
+      digitalWrite(redLed, LOW);
+      digitalWrite(greenLed, LOW);
+      digitalWrite(yellowLed, HIGH);
+    } else {
+     digitalWrite(yellowLed, LOW); 
+    }
   }
 
   if (client.connected()) {
