@@ -3,7 +3,7 @@
         "description": "returns the list of states",
         "path": "/states/*",
         "data": true,
-        "method": "GET"
+        "method": ["GET", "DELETE"]
     },
     {
          "path": "/states/:userId",
