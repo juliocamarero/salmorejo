@@ -20,12 +20,16 @@ import com.liferay.salmorejo.repository.State;
 import com.liferay.salmorejo.repository.DataRepository;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
@@ -54,10 +58,34 @@ public class SalmorejoRestController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(method = RequestMethod.POST)
-	public String postState(@RequestBody String params) {
+	@RequestMapping(value = "/add", method = RequestMethod.POST,
+	        consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+	        produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String addState(MultiValueMap paramMap) throws Exception {
+	    if (paramMap == null) {
+	    	return "Error. Null params";
+		}
 
-		String userId = "";
+		String userId = (String)paramMap.get("user_name");
+
+		State state = new State();
+
+		state.setBusy(true);
+		state.setDate(new Date().getTime());
+		state.setId(userId);
+		state.setUserId(userId);
+
+		dataRepository.save(state);
+
+		return "Pomodoro Started for User " + userId;
+	}
+
+	@CrossOrigin(origins = "*")
+	@RequestMapping(method = RequestMethod.POST)
+	@ResponseBody
+	public String postState(@RequestParam("user_name") String userId) {
+
+		/*String userId = "";
 
 		String[] paramArray = params.split("&");
 
@@ -65,7 +93,7 @@ public class SalmorejoRestController {
 			if (param.startsWith("user_name=")) {
 				userId = param.substring("user_name=".length());
 			}
-		}
+		}*/
 
 		State state = new State();
 
