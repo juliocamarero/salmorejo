@@ -1,0 +1,23 @@
+[
+    {
+        "description": "returns the list of states",
+        "path": "/states/*",
+        "data": true,
+        "method": "GET"
+    },
+    {
+         "path": "/states/:userId",
+         "data": true
+    },
+    {
+         "description": "Creates a new state",
+         "path": "/states",
+         "method": "POST",
+         "parameters": {
+             "userId": {
+                 "required": true
+             }
+         },
+         "data": true
+     }
+]
