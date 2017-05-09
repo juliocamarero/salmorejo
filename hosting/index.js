@@ -22,7 +22,7 @@ form.addEventListener('submit', function(e) {
 			.update(
 				'states/' + userId,
 				{
-					busy: 1,
+					busy: true,
 					date: Date.now(),
 				}
 			)
@@ -41,7 +41,7 @@ form.addEventListener('submit', function(e) {
 		    .create('states', {
 				id: userId,
 				userId: userId,
-				busy: 1,
+				busy: true,
 				date: Date.now(),
 		    }).then(function(state) {
 				form.reset();
