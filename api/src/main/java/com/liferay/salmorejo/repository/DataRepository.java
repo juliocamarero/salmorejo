@@ -20,6 +20,7 @@ import com.wedeploy.api.ApiClient;
 import com.wedeploy.api.WeDeploy;
 import com.wedeploy.api.sdk.Response;
 import com.wedeploy.api.serializer.impl.JoddJsonParser;
+import com.wedeploy.api.serializer.impl.JoddJsonSerializer;
 
 import java.util.List;
 
@@ -53,12 +54,16 @@ public class DataRepository {
 	public Response save(State state) {
 		WeDeploy weDeploy = new WeDeploy(BASE_STATES_DATA_PATH);
 
-		String body = state.toString();
+		JoddJsonSerializer serializer = new JoddJsonSerializer();
 
-		return weDeploy
+		String body = serializer.serialize(state);
+
+		Response response = weDeploy
 			.header("Content-Type", "application/json; charset=UTF-8")
 			.header("Content-Length", Long.toString(body.length()))
 			.post(body);
+
+		return response;
 	}
 
 	private DataRepository() {
