@@ -6,8 +6,9 @@ byte mac[] = {
   0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02
 };
 
-IPAddress server(192,168,50,231);
-int port = 9090;
+char server[] = "api.salmorejo.wedeploy.io";
+//IPAddress server(192,168,50,231);
+int port = 80;
 
 EthernetClient client;
 
@@ -51,7 +52,8 @@ bool httpRequest() {
     Serial.println("connecting...");
 
     // send the HTTP GET request:
-    client.println("GET / HTTP/1.0");
+    client.println("GET /states/julio HTTP/1.0");
+    client.println("Host: api.salmorejo.wedeploy.io");
     client.println();
 
     return true;
@@ -71,7 +73,7 @@ void setup() {
   pinMode(yellowLed, OUTPUT);
 
   digitalWrite(redLed, LOW);
-  digitalWrite(greenLed, HIGH);    
+  digitalWrite(greenLed, HIGH);
 
   // start the Ethernet connection:
   EthernetConnect();
