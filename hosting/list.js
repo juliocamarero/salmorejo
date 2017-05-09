@@ -21,7 +21,7 @@ function appendStates(states) {
 	var statesList = '<ul>';
 
 	states.forEach(function(state) {
-		statesList += `<li>${state.userId} ${state.state} ${state.date} </li>`;
+		statesList += `<li>${state.userId} ${state.busy} ${state.date} </li>`;
 	});
 
 	statesList = statesList + '</ul>';
