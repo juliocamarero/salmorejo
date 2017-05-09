@@ -65,11 +65,8 @@ public class SalmorejoRestController {
 			return "All these users are in Pomodoro....";
 		}
 		else {
-			checkUserPomodoro(text);
+			return checkUserPomodoro(text);
 		}
-
-		return "Sorry, command " + text + " is not available yet.";
-
 	}
 
 	private String checkUserPomodoro(String otherUserId) {
