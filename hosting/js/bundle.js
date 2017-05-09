@@ -22804,17 +22804,10 @@ babelHelpers;
     function $render(opt_data, opt_ignored, opt_ijData) {
       opt_data = opt_data || {};
       ie_open('div', null, null, 'class', 'col-md-10 col-md-offset-3');
-      ie_open('div', null, null, 'class', 'countdown');
-      var ms__soy121 = opt_data.countdown % 1000;
-      var s__soy122 = (opt_data.countdown - ms__soy121) / 1000;
-      var secs__soy123 = s__soy122 % 60;
-      var s2__soy124 = s__soy122 - secs__soy123 / 60;
-      var mins__soy125 = s2__soy124 % 60;
-      var dyn14 = mins__soy125;
+      ie_open('div', null, null, 'class', 'countdown', 'style', 'font-size: 4em;');
+      var dyn14 = opt_data.countdown;
       if (typeof dyn14 == 'function') dyn14();else if (dyn14 != null) itext(dyn14);
-      itext(' : ');
-      var dyn15 = secs__soy123;
-      if (typeof dyn15 == 'function') dyn15();else if (dyn15 != null) itext(dyn15);
+      itext(' minutes left');
       ie_close('div');
       ie_open('div', null, null, 'class', 'form-group');
       ie_open('input', null, null, 'type', 'text', 'class', 'form-control', 'id', 'name', 'placeholder', 'Name');
@@ -22875,6 +22868,8 @@ babelHelpers;
 		babelHelpers.createClass(Pomodoro, [{
 			key: 'start_',
 			value: function start_() {
+				var _this2 = this;
+
 				console.log('starting');
 
 				var userId = this.element.querySelector('#name').value;
@@ -22883,21 +22878,25 @@ babelHelpers;
 				.create('states', {
 					id: userId,
 					userId: userId,
-					busy: 1,
+					busy: true,
 					date: Date.now()
 				}).then(function (state) {
-					console.info('Saved:', state);
+					console.log('Saved:', state);
+					_this2.countdown_();
 				}).catch(function (error) {
-					console.error(error);
+					console.log(error);
 				});
 			}
 		}, {
 			key: 'countdown_',
 			value: function countdown_() {
-				var _this2 = this;
+				var _this3 = this;
+
+				var countdown = 1800000;
 
 				setInterval(function () {
-					_this2.countdown = _this2.countdown - 1000;
+					countdown = countdown - 1000;
+					_this3.countdown = parseInt(countdown / 60000);
 				}, 1000);
 			}
 		}]);
@@ -22910,7 +22909,7 @@ babelHelpers;
 
 	Pomodoro.STATE = {
 		countdown: {
-			value: 1800000
+			value: 30
 		}
 	};
 
@@ -22967,19 +22966,19 @@ babelHelpers;
       ie_open('div', null, null, 'class', 'col-md-10 col-md-offset-3');
       if (opt_data.users) {
         ie_open('ul', null, null, 'style', 'list-style: none;');
-        var userList143 = opt_data.users;
-        var userListLen143 = userList143.length;
-        for (var userIndex143 = 0; userIndex143 < userListLen143; userIndex143++) {
-          var userData143 = userList143[userIndex143];
+        var userList136 = opt_data.users;
+        var userListLen136 = userList136.length;
+        for (var userIndex136 = 0; userIndex136 < userListLen136; userIndex136++) {
+          var userData136 = userList136[userIndex136];
           ie_open('li');
-          var dyn16 = userData143.userId;
+          var dyn15 = userData136.userId;
+          if (typeof dyn15 == 'function') dyn15();else if (dyn15 != null) itext(dyn15);
+          itext(' - ');
+          var dyn16 = userData136.busy;
           if (typeof dyn16 == 'function') dyn16();else if (dyn16 != null) itext(dyn16);
           itext(' - ');
-          var dyn17 = userData143.busy;
+          var dyn17 = userData136.date;
           if (typeof dyn17 == 'function') dyn17();else if (dyn17 != null) itext(dyn17);
-          itext(' - ');
-          var dyn18 = userData143.date;
-          if (typeof dyn18 == 'function') dyn18();else if (dyn18 != null) itext(dyn18);
           ie_close('li');
         }
         ie_close('ul');
@@ -23038,7 +23037,7 @@ babelHelpers;
 				WeDeploy.data('data.salmorejo.wedeploy.me').orderBy('id', 'desc').limit(5).get('states').then(function (response) {
 					_this2.users = response;
 				}).catch(function (error) {
-					console.error(error);
+					console.log(error);
 				});
 			}
 		}, {
@@ -23112,11 +23111,11 @@ babelHelpers;
      */
     function $render(opt_data, opt_ignored, opt_ijData) {
       opt_data = opt_data || {};
-      var param149 = function param149() {
+      var param142 = function param142() {
         $header(opt_data, null, opt_ijData);
         $footer(null, null, opt_ijData);
       };
-      $templateAlias1(soy.$$assignDefaults({ content: param149 }, opt_data), null, opt_ijData);
+      $templateAlias1(soy.$$assignDefaults({ content: param142 }, opt_data), null, opt_ijData);
     }
     exports.render = $render;
     if (goog.DEBUG) {
@@ -23135,12 +23134,12 @@ babelHelpers;
       ie_open('div', null, null, 'class', 'container');
       ie_open('h1', null, null, 'class', 'header-title');
       ie_void('img', null, null, 'src', 'https://image.flaticon.com/icons/svg/403/403610.svg', 'style', 'height: 120px; width: auto; display: block; margin: 0 auto;');
-      var dyn19 = opt_data.site.title;
-      if (typeof dyn19 == 'function') dyn19();else if (dyn19 != null) itext(dyn19);
+      var dyn18 = opt_data.site.title;
+      if (typeof dyn18 == 'function') dyn18();else if (dyn18 != null) itext(dyn18);
       ie_close('h1');
       ie_open('h2', null, null, 'class', 'header-subtitle');
-      var dyn20 = opt_data.site.index.description;
-      if (typeof dyn20 == 'function') dyn20();else if (dyn20 != null) itext(dyn20);
+      var dyn19 = opt_data.site.index.description;
+      if (typeof dyn19 == 'function') dyn19();else if (dyn19 != null) itext(dyn19);
       ie_close('h2');
       ie_open('div', null, null, 'class', 'header-cta');
       $templateAlias2(null, null, opt_ijData);

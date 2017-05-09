@@ -16,19 +16,23 @@ class Pomodoro extends Component {
 		    .create('states', {
 				id: userId,
 				userId: userId,
-				busy: 1,
+				busy: true,
 				date: Date.now(),
-		    }).then(function(state) {
-				console.info('Saved:', state);
+		    }).then((state) => {
+				console.log('Saved:', state);
+				this.countdown_();
 		    })
 			.catch(function(error) {
-				console.error(error);
+				console.log(error);
 			});
 	}
 
 	countdown_() {
+		let countdown = 1800000;
+
 		setInterval(() => {
-			this.countdown = this.countdown - 1000;
+			countdown = countdown - 1000;
+			this.countdown = parseInt(countdown / 60000);
 		},
 		1000);
 	}
@@ -38,7 +42,7 @@ Soy.register(Pomodoro, templates);
 
 Pomodoro.STATE = {
 	countdown: {
-		value: 1800000
+		value: 30
 	}
 }
 

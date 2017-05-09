@@ -16,7 +16,7 @@ class PomodoroList extends Component {
 	        this.users = response;
 	    })
 	    .catch(function(error) {
-	        console.error(error);
+	        console.log(error);
 	    });
 	}
 
