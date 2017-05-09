@@ -1,0 +1,55 @@
+---
+title: "List"
+---
+
+{namespace pageListIndex}
+
+/**
+ *
+ */
+{template .render}
+	{call main.render data="all"}
+		{param content kind="html"}
+			{call .header data="all" /}
+			{call .footer /}
+		{/param}
+	{/call}
+{/template}
+
+
+/**
+ * @param site
+ */
+{template .header}
+	<header class="header">
+		<div class="container">
+			<h1 class="header-title">
+				<img src="https://image.flaticon.com/icons/svg/403/403610.svg" style="height: 120px; width: auto; display: block; margin: 0 auto;"></img>
+				{$site.title}
+			</h1>
+			<h2 class="header-subtitle">{$site.index.description}</h2>
+			<div class="header-cta">
+				{call PomodoroList.render}
+				{/call}
+			</div>
+		</div>
+	</header>
+{/template}
+
+/**
+ *
+ */
+{template .footer}
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<p class="footer-description col-md-6 col-md-offset-2">
+					Copyright © 2017 <a href="https://liferay.com">Liferay, Inc</a>
+				</p>
+				<p class="footer-description col-md-6">
+					Powered by <a href="http://wedeploy.com">WeDeploy™</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+{/template}

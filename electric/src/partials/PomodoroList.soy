@@ -1,0 +1,16 @@
+{namespace PomodoroList}
+
+/**
+ * @param? users
+ */
+{template .render}
+	<div class="col-md-10 col-md-offset-3">
+		{if $users}
+			<ul style="list-style: none;">
+				{foreach $user in $users}
+					<li>{$user.userId} - {$user.busy} - {$user.date}</li>
+				{/foreach}
+			</ul>
+		{/if}
+	</div>
+{/template}
