@@ -21953,6 +21953,182 @@ babelHelpers;
   var templates;
   goog.loadModule(function (exports) {
 
+    // This file was automatically generated from index.soy.
+    // Please don't edit this file by hand.
+
+    /**
+     * @fileoverview Templates in namespace pageIndex.
+     * @public
+     */
+
+    goog.module('pageIndex.incrementaldom');
+
+    /** @suppress {extraRequire} */
+    var soy = goog.require('soy');
+    /** @suppress {extraRequire} */
+    var soydata = goog.require('soydata');
+    /** @suppress {extraRequire} */
+    goog.require('goog.i18n.bidi');
+    /** @suppress {extraRequire} */
+    goog.require('goog.asserts');
+    /** @suppress {extraRequire} */
+    goog.require('goog.string');
+    var IncrementalDom = goog.require('incrementaldom');
+    var ie_open = IncrementalDom.elementOpen;
+    var ie_close = IncrementalDom.elementClose;
+    var ie_void = IncrementalDom.elementVoid;
+    var ie_open_start = IncrementalDom.elementOpenStart;
+    var ie_open_end = IncrementalDom.elementOpenEnd;
+    var itext = IncrementalDom.text;
+    var iattr = IncrementalDom.attr;
+
+    var $templateAlias2 = Soy.getTemplate('Pomodoro.incrementaldom', 'render');
+
+    var $templateAlias1 = Soy.getTemplate('main.incrementaldom', 'render');
+
+    /**
+     * @param {Object<string, *>=} opt_data
+     * @param {(null|undefined)=} opt_ignored
+     * @param {Object<string, *>=} opt_ijData
+     * @return {void}
+     * @suppress {checkTypes}
+     */
+    function $render(opt_data, opt_ignored, opt_ijData) {
+      var param104 = function param104() {
+        $header(opt_data, null, opt_ijData);
+        $footer(null, null, opt_ijData);
+      };
+      $templateAlias1(soy.$$assignDefaults({ content: param104 }, opt_data), null, opt_ijData);
+    }
+    exports.render = $render;
+    if (goog.DEBUG) {
+      $render.soyTemplateName = 'pageIndex.render';
+    }
+
+    /**
+     * @param {Object<string, *>=} opt_data
+     * @param {(null|undefined)=} opt_ignored
+     * @param {Object<string, *>=} opt_ijData
+     * @return {void}
+     * @suppress {checkTypes}
+     */
+    function $header(opt_data, opt_ignored, opt_ijData) {
+      ie_open('header', null, null, 'class', 'header');
+      ie_open('div', null, null, 'class', 'container');
+      ie_open('h1', null, null, 'class', 'header-title');
+      ie_void('img', null, null, 'src', 'https://image.flaticon.com/icons/svg/403/403610.svg', 'style', 'height: 120px; width: auto; display: block; margin: 0 auto;');
+      var dyn12 = opt_data.site.title;
+      if (typeof dyn12 == 'function') dyn12();else if (dyn12 != null) itext(dyn12);
+      ie_close('h1');
+      ie_open('h2', null, null, 'class', 'header-subtitle');
+      var dyn13 = opt_data.site.index.description;
+      if (typeof dyn13 == 'function') dyn13();else if (dyn13 != null) itext(dyn13);
+      ie_close('h2');
+      ie_open('div', null, null, 'class', 'header-cta');
+      $templateAlias2(null, null, opt_ijData);
+      ie_close('div');
+      ie_close('div');
+      ie_close('header');
+    }
+    exports.header = $header;
+    if (goog.DEBUG) {
+      $header.soyTemplateName = 'pageIndex.header';
+    }
+
+    /**
+     * @param {Object<string, *>=} opt_data
+     * @param {(null|undefined)=} opt_ignored
+     * @param {Object<string, *>=} opt_ijData
+     * @return {void}
+     * @suppress {checkTypes}
+     */
+    function $footer(opt_data, opt_ignored, opt_ijData) {
+      ie_open('footer', null, null, 'class', 'footer');
+      ie_open('div', null, null, 'class', 'container');
+      ie_open('div', null, null, 'class', 'row');
+      ie_open('p', null, null, 'class', 'footer-description col-md-6 col-md-offset-2');
+      itext('Copyright \xA9 2017 ');
+      ie_open('a', null, null, 'href', 'https://liferay.com');
+      itext('Liferay, Inc');
+      ie_close('a');
+      ie_close('p');
+      ie_open('p', null, null, 'class', 'footer-description col-md-6');
+      itext('Powered by ');
+      ie_open('a', null, null, 'href', 'http://wedeploy.com');
+      itext('WeDeploy\u2122');
+      ie_close('a');
+      ie_close('p');
+      ie_close('div');
+      ie_close('div');
+      ie_close('footer');
+    }
+    exports.footer = $footer;
+    if (goog.DEBUG) {
+      $footer.soyTemplateName = 'pageIndex.footer';
+    }
+
+    exports.render.params = ["site"];
+    exports.render.types = { "site": "any" };
+    exports.header.params = ["site"];
+    exports.header.types = { "site": "any" };
+    exports.footer.params = [];
+    exports.footer.types = {};
+    templates = exports;
+    return exports;
+  });
+
+  var pageIndex = function (_Component) {
+    babelHelpers.inherits(pageIndex, _Component);
+
+    function pageIndex() {
+      babelHelpers.classCallCheck(this, pageIndex);
+      return babelHelpers.possibleConstructorReturn(this, (pageIndex.__proto__ || Object.getPrototypeOf(pageIndex)).apply(this, arguments));
+    }
+
+    return pageIndex;
+  }(Component);
+
+  Soy.register(pageIndex, templates);
+  this['metalNamed']['index'] = this['metalNamed']['index'] || {};
+  this['metalNamed']['index']['pageIndex'] = pageIndex;
+  this['metalNamed']['index']['templates'] = templates;
+  this['metal']['index'] = templates;
+  /* jshint ignore:end */
+}).call(this);
+'use strict';
+
+(function () {
+  var Component = this['metal']['component'];
+  var Soy = this['metal']['Soy'];
+  var templates = this['metal']['index'];
+
+  var pageIndex = function (_Component) {
+    babelHelpers.inherits(pageIndex, _Component);
+
+    function pageIndex() {
+      babelHelpers.classCallCheck(this, pageIndex);
+      return babelHelpers.possibleConstructorReturn(this, (pageIndex.__proto__ || Object.getPrototypeOf(pageIndex)).apply(this, arguments));
+    }
+
+    return pageIndex;
+  }(Component);
+
+  ;
+
+  Soy.register(pageIndex, templates);
+
+  this['metal']['pageIndex'] = pageIndex;
+}).call(this);
+'use strict';
+
+(function () {
+  /* jshint ignore:start */
+  var Component = this['metal']['component'];
+  var Soy = this['metal']['Soy'];
+
+  var templates;
+  goog.loadModule(function (exports) {
+
     // This file was automatically generated from blog.soy.
     // Please don't edit this file by hand.
 
@@ -22589,182 +22765,6 @@ babelHelpers;
   var templates;
   goog.loadModule(function (exports) {
 
-    // This file was automatically generated from index.soy.
-    // Please don't edit this file by hand.
-
-    /**
-     * @fileoverview Templates in namespace pageIndex.
-     * @public
-     */
-
-    goog.module('pageIndex.incrementaldom');
-
-    /** @suppress {extraRequire} */
-    var soy = goog.require('soy');
-    /** @suppress {extraRequire} */
-    var soydata = goog.require('soydata');
-    /** @suppress {extraRequire} */
-    goog.require('goog.i18n.bidi');
-    /** @suppress {extraRequire} */
-    goog.require('goog.asserts');
-    /** @suppress {extraRequire} */
-    goog.require('goog.string');
-    var IncrementalDom = goog.require('incrementaldom');
-    var ie_open = IncrementalDom.elementOpen;
-    var ie_close = IncrementalDom.elementClose;
-    var ie_void = IncrementalDom.elementVoid;
-    var ie_open_start = IncrementalDom.elementOpenStart;
-    var ie_open_end = IncrementalDom.elementOpenEnd;
-    var itext = IncrementalDom.text;
-    var iattr = IncrementalDom.attr;
-
-    var $templateAlias2 = Soy.getTemplate('Pomodoro.incrementaldom', 'render');
-
-    var $templateAlias1 = Soy.getTemplate('main.incrementaldom', 'render');
-
-    /**
-     * @param {Object<string, *>=} opt_data
-     * @param {(null|undefined)=} opt_ignored
-     * @param {Object<string, *>=} opt_ijData
-     * @return {void}
-     * @suppress {checkTypes}
-     */
-    function $render(opt_data, opt_ignored, opt_ijData) {
-      var param104 = function param104() {
-        $header(opt_data, null, opt_ijData);
-        $footer(null, null, opt_ijData);
-      };
-      $templateAlias1(soy.$$assignDefaults({ content: param104 }, opt_data), null, opt_ijData);
-    }
-    exports.render = $render;
-    if (goog.DEBUG) {
-      $render.soyTemplateName = 'pageIndex.render';
-    }
-
-    /**
-     * @param {Object<string, *>=} opt_data
-     * @param {(null|undefined)=} opt_ignored
-     * @param {Object<string, *>=} opt_ijData
-     * @return {void}
-     * @suppress {checkTypes}
-     */
-    function $header(opt_data, opt_ignored, opt_ijData) {
-      ie_open('header', null, null, 'class', 'header');
-      ie_open('div', null, null, 'class', 'container');
-      ie_open('h1', null, null, 'class', 'header-title');
-      ie_void('img', null, null, 'src', 'https://image.flaticon.com/icons/svg/403/403610.svg', 'style', 'height: 120px; width: auto; display: block; margin: 0 auto;');
-      var dyn12 = opt_data.site.title;
-      if (typeof dyn12 == 'function') dyn12();else if (dyn12 != null) itext(dyn12);
-      ie_close('h1');
-      ie_open('h2', null, null, 'class', 'header-subtitle');
-      var dyn13 = opt_data.site.index.description;
-      if (typeof dyn13 == 'function') dyn13();else if (dyn13 != null) itext(dyn13);
-      ie_close('h2');
-      ie_open('div', null, null, 'class', 'header-cta');
-      $templateAlias2(null, null, opt_ijData);
-      ie_close('div');
-      ie_close('div');
-      ie_close('header');
-    }
-    exports.header = $header;
-    if (goog.DEBUG) {
-      $header.soyTemplateName = 'pageIndex.header';
-    }
-
-    /**
-     * @param {Object<string, *>=} opt_data
-     * @param {(null|undefined)=} opt_ignored
-     * @param {Object<string, *>=} opt_ijData
-     * @return {void}
-     * @suppress {checkTypes}
-     */
-    function $footer(opt_data, opt_ignored, opt_ijData) {
-      ie_open('footer', null, null, 'class', 'footer');
-      ie_open('div', null, null, 'class', 'container');
-      ie_open('div', null, null, 'class', 'row');
-      ie_open('p', null, null, 'class', 'footer-description col-md-6 col-md-offset-2');
-      itext('Copyright \xA9 2017 ');
-      ie_open('a', null, null, 'href', 'https://liferay.com');
-      itext('Liferay, Inc');
-      ie_close('a');
-      ie_close('p');
-      ie_open('p', null, null, 'class', 'footer-description col-md-6');
-      itext('Powered by ');
-      ie_open('a', null, null, 'href', 'http://wedeploy.com');
-      itext('WeDeploy\u2122');
-      ie_close('a');
-      ie_close('p');
-      ie_close('div');
-      ie_close('div');
-      ie_close('footer');
-    }
-    exports.footer = $footer;
-    if (goog.DEBUG) {
-      $footer.soyTemplateName = 'pageIndex.footer';
-    }
-
-    exports.render.params = ["site"];
-    exports.render.types = { "site": "any" };
-    exports.header.params = ["site"];
-    exports.header.types = { "site": "any" };
-    exports.footer.params = [];
-    exports.footer.types = {};
-    templates = exports;
-    return exports;
-  });
-
-  var pageIndex = function (_Component) {
-    babelHelpers.inherits(pageIndex, _Component);
-
-    function pageIndex() {
-      babelHelpers.classCallCheck(this, pageIndex);
-      return babelHelpers.possibleConstructorReturn(this, (pageIndex.__proto__ || Object.getPrototypeOf(pageIndex)).apply(this, arguments));
-    }
-
-    return pageIndex;
-  }(Component);
-
-  Soy.register(pageIndex, templates);
-  this['metalNamed']['index'] = this['metalNamed']['index'] || {};
-  this['metalNamed']['index']['pageIndex'] = pageIndex;
-  this['metalNamed']['index']['templates'] = templates;
-  this['metal']['index'] = templates;
-  /* jshint ignore:end */
-}).call(this);
-'use strict';
-
-(function () {
-  var Component = this['metal']['component'];
-  var Soy = this['metal']['Soy'];
-  var templates = this['metal']['index'];
-
-  var pageIndex = function (_Component) {
-    babelHelpers.inherits(pageIndex, _Component);
-
-    function pageIndex() {
-      babelHelpers.classCallCheck(this, pageIndex);
-      return babelHelpers.possibleConstructorReturn(this, (pageIndex.__proto__ || Object.getPrototypeOf(pageIndex)).apply(this, arguments));
-    }
-
-    return pageIndex;
-  }(Component);
-
-  ;
-
-  Soy.register(pageIndex, templates);
-
-  this['metal']['pageIndex'] = pageIndex;
-}).call(this);
-'use strict';
-
-(function () {
-  /* jshint ignore:start */
-  var Component = this['metal']['component'];
-  var Soy = this['metal']['Soy'];
-
-  var templates;
-  goog.loadModule(function (exports) {
-
     // This file was automatically generated from Pomodoro.soy.
     // Please don't edit this file by hand.
 
@@ -22874,7 +22874,7 @@ babelHelpers;
 
 				var userId = this.element.querySelector('#name').value;
 
-				WeDeploy.data('data.salmorejo.wedeploy.me') // this should be io in production
+				WeDeploy.data('data.salmorejo.wedeploy.io') // this should be io in production
 				.create('states', {
 					id: userId,
 					userId: userId,
@@ -23034,7 +23034,7 @@ babelHelpers;
 			value: function created() {
 				var _this2 = this;
 
-				WeDeploy.data('data.salmorejo.wedeploy.me').orderBy('id', 'desc').limit(5).get('states').then(function (response) {
+				WeDeploy.data('data.salmorejo.wedeploy.io').orderBy('id', 'desc').limit(5).get('states').then(function (response) {
 					_this2.users = response;
 				}).catch(function (error) {
 					console.log(error);
