@@ -1,0 +1,57 @@
+//group 'com.liferay.salmorejo'
+version '1.0-SNAPSHOT'
+
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/release" }
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE")
+  }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+jar {
+  baseName = 'salmorejo-api'
+  version =  '1.0-SNAPSHOT'
+}
+
+task run(dependsOn: ':bootRun') << {
+  println 'Boot'
+}
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+  maven { url "https://jitpack.io" }
+  maven { url "http://repo.spring.io/release" }
+}
+
+dependencies {
+  compile 'com.wedeploy:com.wedeploy.api-java.api:beta-20170331'
+  compile 'com.wedeploy:com.wedeploy.api-java.api-client:beta-20170331'
+  compile("org.springframework.boot:spring-boot-starter-web")
+  compile("org.springframework.boot:spring-boot-starter-actuator")
+
+  testCompile("org.springframework.boot:spring-boot-starter-test")
+  testCompile("junit:junit")
+  testCompile("org.codehaus.groovy:groovy-all:2.4.4")
+  testCompile("org.codehaus.groovy.modules.http-builder:http-builder:0.7")
+  testCompile("org.spockframework:spock-core:1.0-groovy-2.4")
+
+  testRuntime("com.athaydes:spock-reports:1.2.7")
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '3.2.1'
+}
+
