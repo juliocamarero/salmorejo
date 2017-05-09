@@ -75,7 +75,7 @@ public class SalmorejoRestController {
 		if (state != null && state.isBusy()) {
 			Date time = new Date();
 
-			return otherUserId + " is still busy for " + (30 - (time.getTime() - state.getDate())/60000);
+			return otherUserId + " is still busy for " + (30 - (time.getTime() - state.getDate())/60000) + " minutes";
 		}
 
 		return otherUserId + " is available :)";
@@ -89,6 +89,7 @@ public class SalmorejoRestController {
 		state.setId(userId);
 		state.setUserId(userId);
 
+		dataRepository.create(state);
 		dataRepository.save(state);
 
 		return "Pomodoro Started for User " + userId;

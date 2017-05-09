@@ -51,7 +51,7 @@ public class DataRepository {
 		return null;
 	}
 
-	public Response save(State state) {
+	public Response create(State state) {
 		WeDeploy weDeploy = new WeDeploy(BASE_STATES_DATA_PATH);
 
 		JoddJsonSerializer serializer = new JoddJsonSerializer();
@@ -62,6 +62,21 @@ public class DataRepository {
 			.header("Content-Type", "application/json; charset=UTF-8")
 			.header("Content-Length", Long.toString(body.length()))
 			.post(body);
+
+		return response;
+	}
+
+	public Response save(State state) {
+		WeDeploy weDeploy = new WeDeploy(BASE_STATES_DATA_PATH+state.getId());
+
+		JoddJsonSerializer serializer = new JoddJsonSerializer();
+
+		String body = serializer.serialize(state);
+
+		Response response = weDeploy
+			.header("Content-Type", "application/json; charset=UTF-8")
+			.header("Content-Length", Long.toString(body.length()))
+			.put(body);
 
 		return response;
 	}
