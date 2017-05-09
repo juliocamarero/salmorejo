@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * @author Manuel de la Peña
@@ -50,6 +51,32 @@ public class SalmorejoRestController {
 		}
 
 		return "idle";
+	}
+
+	@CrossOrigin(origins = "*")
+	@RequestMapping(method = RequestMethod.POST)
+	public String postState(@RequestBody String params) {
+
+		String userId = "";
+
+		String[] paramArray = params.split("&");
+
+		for (String param : paramArray) {
+			if (param.startsWith("user_name=")) {
+				userId = param.substring("user_name=".length());
+			}
+		}
+
+		State state = new State();
+
+		state.setBusy(true);
+		state.setDate(new Date().getTime());
+		state.setId(userId);
+		state.setUserId(userId);
+
+		dataRepository.save(state);
+
+		return "Pomodoro Started for User " + userId;
 	}
 
 }

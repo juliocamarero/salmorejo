@@ -50,6 +50,17 @@ public class DataRepository {
 		return null;
 	}
 
+	public Response save(State state) {
+		WeDeploy weDeploy = new WeDeploy(BASE_STATES_DATA_PATH);
+
+		String body = state.toString();
+
+		return weDeploy
+			.header("Content-Type", "application/json; charset=UTF-8")
+			.header("Content-Length", Long.toString(body.length()))
+			.post(body);
+	}
+
 	private DataRepository() {
 		ApiClient.init();
 	}
