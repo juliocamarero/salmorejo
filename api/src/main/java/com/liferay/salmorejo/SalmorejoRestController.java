@@ -75,7 +75,14 @@ public class SalmorejoRestController {
 		if (state != null && state.isBusy()) {
 			Date time = new Date();
 
-			return otherUserId + " is still busy for " + (30 - (time.getTime() - state.getDate())/60000) + " minutes";
+			long difference = (time.getTime() - state.getDate())/60000;
+
+			if (difference > 0) {
+				return otherUserId + " is still busy for " + difference + " minutes";
+			}
+			else {
+				return otherUserId + " has been available since " + (-difference) + " minutes ago";
+			}
 		}
 
 		return otherUserId + " is available :)";
