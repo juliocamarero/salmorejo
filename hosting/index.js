@@ -8,7 +8,7 @@ form.addEventListener('submit', function(e) {
 	var existingStateforUser;
 
 	WeDeploy
-		.data('data.salmorejo.wedeploy.me') // this should be io in production
+		.data('data.salmorejo.wedeploy.io') // this should be io in production
 	    .get('states/' + userId)
 	    .then(function(state) {
 	        console.log(state);
@@ -18,7 +18,7 @@ form.addEventListener('submit', function(e) {
 
 	if (existingStateforUser) {
 		WeDeploy
-			.data('data.salmorejo.wedeploy.me') // this should be io in production
+			.data('data.salmorejo.wedeploy.io') // this should be io in production
 			.update(
 				'states/' + userId,
 				{
@@ -37,7 +37,7 @@ form.addEventListener('submit', function(e) {
 	}
 	else {
 		WeDeploy
-			.data('data.salmorejo.wedeploy.me') // this should be io in production
+			.data('data.salmorejo.wedeploy.io') // this should be io in production
 		    .create('states', {
 				id: userId,
 				userId: userId,

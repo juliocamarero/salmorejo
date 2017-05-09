@@ -4,7 +4,7 @@ var list = document.querySelector('.list');
 // Insert fetch data method below
 
 WeDeploy
-    .data('data.salmorejo.wedeploy.me')
+    .data('data.salmorejo.wedeploy.io')
     .orderBy('id', 'desc')
     .limit(5)
     .get('states')
